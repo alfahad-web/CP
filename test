@@ -1,3 +1,15 @@
-g++ -o program code.cpp
-./program.exe < input.txt > output.txt && cat output.txt
+#!/bin/bash
 
+# Use the provided source file or default to code.cpp
+source_file=${1:-code.cpp}
+
+# Extract the file name without extension for the output program
+# output_file=${source_file%.cpp}
+
+# Compile and run the program
+g++ -o program "$source_file"
+if [ $? -eq 0 ]; then
+    ./program.exe < input.txt > output.txt && cat output.txt
+else
+    echo "Compilation failed!"
+fi
