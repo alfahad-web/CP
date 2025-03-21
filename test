@@ -9,6 +9,10 @@ source_file=${1:-code.cpp}
 # Compile and run the program
 g++ -o program "$source_file"
 if [ $? -eq 0 ]; then
+    if [ ! -f "input.txt" ]; then
+        echo "Error: input.txt not found. Please create input.txt file first."
+        exit 1
+    fi
     ./program.exe < input.txt > output.txt && cat output.txt
 else
     echo "Compilation failed!"

@@ -1,3 +1,4 @@
 *.cpp
+!template.cpp
 *.txt
 *.exe
